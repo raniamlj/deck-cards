@@ -9,7 +9,11 @@ class Container extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mesPoissons2: ["angel", "clown", "mandarin", "surgeon"],
+            /* originalDeck: []
+             shuffledDeck: []
+             dealtCard: []*/
+            mesPoissons2: ["angel", "clown", "mandarin", "surgeon"]
+            //tab_temp: []
         };
     }
 
@@ -54,9 +58,14 @@ class Container extends Component {
         console.log("mesPoissons après : " + mesP2);
         console.log("A retiré cet élément : " + popped);
 
-        //this.setState({ mesPoissons2: mesP2 })
-        console.log("le state devient")
-        console.log(this.state.mesPoissons2)
+        if (counter > 0) {
+            this.setState({ mesPoissons2: mesP2 })
+            console.log("le state devient")
+            console.log(this.state.mesPoissons2)
+        } else {
+            console.log("fini les cartes")
+        }
+
         return mesP2;
     }
 
