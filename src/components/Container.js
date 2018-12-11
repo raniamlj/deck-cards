@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-//ReactDOM is a sub-library of React wich is only aimed at attaching a component to a part of the current DOM and rendering the component. 
-//import ReactDOM from 'react-dom'
 
 import Deck from "./Deck"
 
@@ -12,7 +10,8 @@ class Container extends Component {
             /* originalDeck: []
              shuffledDeck: []
              dealtCard: []*/
-            mesPoissons2: ["angel", "clown", "mandarin", "surgeon"]
+            mesPoissons2: ["angel", "clown", "mandarin", "surgeon"],
+            originalDeck: []
             //tab_temp: []
         };
     }
@@ -33,6 +32,9 @@ class Container extends Component {
         }
         return deck;
     }
+
+    /*
+    //<button onClick={this.dealOnePoisson(mesP2)} >Deal poisson </button>
 
     dealOnePoisson(mesP2) {
         console.log('deal one poisson');
@@ -67,57 +69,34 @@ class Container extends Component {
         }
 
         return mesP2;
-    }
-
-
-
-
-
-        /*dealOneCard(mesP2) {
-        console.log('deal one poisson');
-        let counter = mesP2.length;
-        console.log('longeur liste poisson', +counter);
-        let unPoisson;
-
-        oneCard = Math.floor(Math.random() * counter--);
-        console.log("lindice du poisson selectionné : " + oneCard);
-        console.log("le poisson selectionné : " + mesP2[oneCard]);
-        //enleves = mesPoissons2.splice(unPoisson, 1);
-
-        //permutWithLast(popped,counter)
-        mesP2[inter] = mesP2[oneCard]
-        mesP2[oneCard] = mesP2[oneCard]
-        mesP2[counter] = mesP2[inter]
-
-
-        let popped = mesP2.pop();
-        console.log("A retiré cet élément : " + popped);
-        let inter = popped
-
-        console.log("mesPoissons après : " + mesP2);
-        console.log("A retiré cet élément : " + popped);
-
-        if (counter > 0) {
-            this.setState({ mesPoissons2: mesP2 })
-            console.log("le state devient")
-            console.log(this.state.mesPoissons2)
-        } else {
-            console.log("fini les cartes")
-        }
-
-        return mesP2;
     }*/
 
 
 
 
 
+        dealOneCard(deck) {
+        let counter = deck.length;
+        console.log('longeur liste ', +counter);
+        let oneCard;
 
+        oneCard = Math.floor(Math.random() * counter--);     
 
+        //permutWithLast(popped,counter)
+        deck[inter] = deck[oneCard]
+        deck[oneCard] = deck[oneCard]
+        deck[counter] = deck[inter]
+        let popped = deck.pop();
+        let inter = popped
 
-
-
-
+        if (counter > 0) {
+            this.setState({ originalDeck: deck })
+            console.log("le state devient")
+        } else {
+            console.log("fini les cartes")
+        }
+        return deck;
+    }
 
 
 
@@ -128,7 +107,7 @@ class Container extends Component {
         const values = ["Ac", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jk", "Qn", "Kg"];
         let cardDeck = [];
         let card = [];
-        let mesP2 = this.state.mesPoissons2
+        //let mesP2 = this.state.mesPoissons2
 
         for (let x = 0; x < suits.length; x++) {
             for (let y = 0; y < values.length; y++) {
@@ -136,11 +115,13 @@ class Container extends Component {
                 cardDeck.push(card);
             }
         };
-
+        console.log("la liste des carte est"+cardDeck)
+        //this.setState({originalDeck:cardDeck })
         return (
             <div>
                 <button onClick={this.shuffleCards.bind(this, cardDeck)}>Shuffle</button>
-                <button onClick={this.dealOnePoisson(mesP2)} >Deal Card </button>
+                <button onClick={this.dealOneCard.bind(this, cardDeck)} >Deal Card </button>
+                
                 <Deck cardDeck={this.shuffleCards(cardDeck)}></Deck>
             </div>
         );
