@@ -71,6 +71,57 @@ class Container extends Component {
 
 
 
+
+
+        /*dealOneCard(mesP2) {
+        console.log('deal one poisson');
+        let counter = mesP2.length;
+        console.log('longeur liste poisson', +counter);
+        let unPoisson;
+
+        oneCard = Math.floor(Math.random() * counter--);
+        console.log("lindice du poisson selectionné : " + oneCard);
+        console.log("le poisson selectionné : " + mesP2[oneCard]);
+        //enleves = mesPoissons2.splice(unPoisson, 1);
+
+        //permutWithLast(popped,counter)
+        mesP2[inter] = mesP2[oneCard]
+        mesP2[oneCard] = mesP2[oneCard]
+        mesP2[counter] = mesP2[inter]
+
+
+        let popped = mesP2.pop();
+        console.log("A retiré cet élément : " + popped);
+        let inter = popped
+
+        console.log("mesPoissons après : " + mesP2);
+        console.log("A retiré cet élément : " + popped);
+
+        if (counter > 0) {
+            this.setState({ mesPoissons2: mesP2 })
+            console.log("le state devient")
+            console.log(this.state.mesPoissons2)
+        } else {
+            console.log("fini les cartes")
+        }
+
+        return mesP2;
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     render() {
         const mesPoissons = ["angel", "clown", "mandarin", "surgeon"];
         const suits = ["♠︎", "♥︎", "♣︎", "♦︎"];
