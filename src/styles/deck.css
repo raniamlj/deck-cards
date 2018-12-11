@@ -1,0 +1,8 @@
+#root {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  .deck {
+      display: flex;
+      flex-flow: row wrap;
+    }

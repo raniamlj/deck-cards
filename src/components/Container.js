@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import "../styles/card.css"
-import Card from "./Card"
+import Deck from "./Deck"
 
 class Container extends Component {
 
@@ -36,17 +35,18 @@ class Container extends Component {
                 cardDeck.push(card);
             }
         };
-
-        this.shuffleCards(cardDeck);
+        function handleClick(e) {
+            e.preventDefault();
+            console.log('The link was clicked.');
+          }
+        
 
         return (
             <div>
-                
-                <div className="deck">
-                    {cardDeck.map(function (card) {
-                        return <Card suit={card.suit} value={card.val} />
-                    })}
-                </div>
+                <button >shuffle</button>
+                <button >TIRER </button>
+                <Deck cardDeck={this.shuffleCards(cardDeck)}></Deck>
+
             </div>
 
         );
