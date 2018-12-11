@@ -8,9 +8,11 @@ class Container extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            mesPoissons2: ["angel", "clown", "mandarin", "surgeon"],
+        };
     }
-    
+
 
 
     shuffleCards(deck) {
@@ -28,71 +30,36 @@ class Container extends Component {
         return deck;
     }
 
-    /*dealOneCard(deck) 
-    {
-        console.log('deal one card');
-        let counter = deck.length;
-        let card;
-
-        while (counter) {
-            card = Math.floor(Math.random() * counter--);
-        } 
-        return card;
-    }*/
-   /* permutWithLast(i,j)
-    {
-        const mesPoissons = ["angel", "clown", "mandarin", "surgeon"];
-        let inter=i
-        mesPoissons[inter]=mesPoissons[i]
-        mesPoissons[i]=mesPoissons[j]
-        mesPoissons[j]=mesPoissons[inter]
-    }*/
-
-    /*retirerPoisson(mesPoissons, unPoisson) 
-    {
-        let counter = mesPoissons.length;
-        let popped = mesPoissons.pop();
-        console.log("mesPoissons après : " + mesPoissons);
-        console.log("A retiré cet élément : " + popped);
-        //permutWithLast(popped,counter)
-        let inter=popped
-        mesPoissons[inter]=mesPoissons[popped]
-        mesPoissons[popped]=mesPoissons[counter]
-        mesPoissons[counter]=mesPoissons[inter]
-
-        return mesPoissons;
-    }*/
-
-    dealOnePoisson(mesPoissons) {
+    dealOnePoisson(mesP2) {
         console.log('deal one poisson');
-        let counter = mesPoissons.length;
+        let counter = mesP2.length;
         console.log('longeur liste poisson', +counter);
         let unPoisson;
 
         unPoisson = Math.floor(Math.random() * counter--);
         console.log("lindice du poisson selectionné : " + unPoisson);
-        console.log("le poisson selectionné : " + mesPoissons[unPoisson]);
+        console.log("le poisson selectionné : " + mesP2[unPoisson]);
+        //enleves = mesPoissons2.splice(unPoisson, 1);
+
         //permutWithLast(popped,counter)
-        mesPoissons[inter]=mesPoissons[unPoisson]
-        mesPoissons[unPoisson]=mesPoissons[counter]
-        mesPoissons[counter]=mesPoissons[inter]
+        mesP2[inter] = mesP2[unPoisson]
+        mesP2[unPoisson] = mesP2[counter]
+        mesP2[counter] = mesP2[inter]
 
-         
-         let popped = mesPoissons.pop();
-         console.log("A retiré cet élément : " + popped);
-         let inter=popped
 
- 
-        console.log("mesPoissons après : " + mesPoissons);
+        let popped = mesP2.pop();
         console.log("A retiré cet élément : " + popped);
-         
-       // mesPoissons = retirerPoisson(mesPoissons, unPoisson)
-       
-        
-       
-        return mesPoissons;
+        let inter = popped
+
+        console.log("mesPoissons après : " + mesP2);
+        console.log("A retiré cet élément : " + popped);
+
+        //this.setState({ mesPoissons2: mesP2 })
+        console.log("le state devient")
+        console.log(this.state.mesPoissons2)
+        return mesP2;
     }
-  
+
 
 
     render() {
@@ -101,6 +68,7 @@ class Container extends Component {
         const values = ["Ac", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jk", "Qn", "Kg"];
         let cardDeck = [];
         let card = [];
+        let mesP2 = this.state.mesPoissons2
 
         for (let x = 0; x < suits.length; x++) {
             for (let y = 0; y < values.length; y++) {
@@ -108,23 +76,13 @@ class Container extends Component {
                 cardDeck.push(card);
             }
         };
-        /*function handleClick(e) {
-            //e.preventDefault();
-            console.log('The link was clicked.');
-            }*/
-        
-
 
         return (
             <div>
-                <button onClick={this.shuffleCards.bind(this)}>Shuffle</button> 
-
-                <button onClick={this.dealOnePoisson(mesPoissons)} >Deal Card </button>
-
+                <button onClick={this.shuffleCards.bind(this, cardDeck)}>Shuffle</button>
+                <button onClick={this.dealOnePoisson(mesP2)} >Deal Card </button>
                 <Deck cardDeck={this.shuffleCards(cardDeck)}></Deck>
-
             </div>
-
         );
     }
 }
