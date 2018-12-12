@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import "../styles/card.css";
 
+//component to represent card
 
 const Card = ({ suit, value }) => {
   if (suit === "♣︎" || suit === "♠︎") {
